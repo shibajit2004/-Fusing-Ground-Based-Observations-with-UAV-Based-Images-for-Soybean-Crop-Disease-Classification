@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QWidget {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #fafafa;
+    }
+    QLabel#label_original {
+        font-size: 18px;
+        font-weight: bold;
+        color: #2e7d32;
+    }
+    QLabel#label_processed {
+        font-size: 18px;
+        font-weight: bold;
+        color: #c62828;
+    }
+    QLabel#image_original {
+        border: 1px solid #bbb;
+        background-color: #ffffff;
+        padding: 100px 10px;
+        margin-bottom: 10px;
+    }
+    QPushButton#btn_back {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 20px;
+        border-radius: 8px;
+    }
+    QPushButton#btn_back:hover {
+        background-color: #43a047;
+    }
+    QGraphicsView#graphicsView_processed {
+        background-color: #fff;
+        border: 1px solid #bbb;
+    }
+   </string>
+  </property>
+
+  <layout class="QHBoxLayout" name="horizontalLayout">
+
+   <!-- LEFT PANEL -->
+   <item>
+    <layout class="QVBoxLayout" name="leftLayout">
+     <item>
+      <widget class="QLabel" name="label_original">
+       <property name="text">
+        <string>Inserted Image</string>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>300</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="image_original">
+       <property name="minimumSize">
+        <size>
+         <width>300</width>
+         <height>500</height>
+        </size>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_back">
+       <property name="text">
+        <string>← Back to Upload Page</string>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>300</width>
+         <height>100</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+   <!-- RIGHT PANEL -->
+   <item>
+    <layout class="QVBoxLayout" name="rightLayout">
+     <item>
+      <widget class="QLabel" name="label_processed">
+       <property name="text">
+        <string>Image after Disease Detection</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGraphicsView" name="graphicsView_processed">
+       <property name="minimumSize">
+        <size>
+         <width>600</width>
+         <height>400</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

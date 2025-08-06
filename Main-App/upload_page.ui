@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>800</width><height>600</height></rect>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QWidget {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f5f5f5;
+    }
+    QLabel#label_title {
+        font-size: 28px;
+        font-weight: bold;
+        color: #000000;
+        background-color: transparent;
+    }
+    QLabel#logo_app {
+        margin-right: 10px;
+        background-color: transparent;
+    }
+    QLabel#logo_drop {
+        background-color: transparent;
+    }
+    QFrame#drop_area {
+        border: 2px dashed #66bb6a;
+        border-radius: 16px;
+        background-color: #e8f5e9;
+        padding: 30px;
+    }
+    QFrame#drop_area:hover {
+        background-color: #d0f0d3;
+    }
+    QLabel#label_drag {
+        font-size: 20px;
+        color: #000000;
+        padding-top: 5px;
+        background-color: transparent;
+        
+    }
+    QPushButton#btn_select {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 24px;
+        font-size: 14px;
+        border: none;
+        border-radius: 6px;
+    }
+    QPushButton#btn_select:hover {
+        background-color: #45a049;
+    }
+    QLabel#label_footer {
+        font-size: 12px;
+        color: #FFFFFF;
+        background-color: #000000;
+        padding: 10px;
+    }
+    QWidget#headerWidget {
+        background-color: #ffffff;
+        padding: 10px;
+    }
+   </string>
+  </property>
+
+  <layout class="QVBoxLayout" name="mainLayout">
+
+   <!-- HEADER -->
+   <item>
+    <widget class="QWidget" name="headerWidget">
+     <layout class="QHBoxLayout" name="headerLayout">
+      <item><spacer name="spacer_left"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint"><size><width>20</width><height>50</height></size></property></spacer></item>
+      <item>
+       <layout class="QHBoxLayout" name="centerHeaderLayout">
+        <item>
+         <widget class="QLabel" name="logo_app">
+          <property name="pixmap"><pixmap>logo_app.png</pixmap></property>
+          <property name="maximumSize"><size><width>50</width><height>40</height></size></property>
+          <property name="scaledContents"><bool>true</bool></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_title">
+          <property name="text"><string>AgriVision AI</string></property>
+          <property name="alignment"><set>Qt::AlignVCenter|Qt::AlignLeft</set></property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item><spacer name="spacer_right"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint"><size><width>20</width><height>50</height></size></property></spacer></item>
+     </layout>
+    </widget>
+   </item>
+
+   <!-- BANNER IMAGE (replaces subtitle) -->
+   <item>
+    <widget class="QLabel" name="label_banner">
+     <property name="pixmap"><pixmap>banner.webp</pixmap></property>
+     <property name="alignment"><set>Qt::AlignCenter</set></property>
+     <property name="scaledContents"><bool>true</bool></property>
+     <property name="maximumSize"><size><width>16777215</width><height>200</height></size></property>
+    </widget>
+   </item>
+
+   <!-- VERTICAL SPACER (TOP) -->
+   <item>
+    <spacer name="vertical_spacer_top">
+     <property name="orientation"><enum>Qt::Vertical</enum></property>
+     <property name="sizeHint"><size><width>20</width><height>30</height></size></property>
+    </spacer>
+   </item>
+
+   <!-- DROP AREA -->
+   <item>
+    <widget class="QFrame" name="drop_area">
+     <layout class="QVBoxLayout" name="dropLayout">
+      <property name="spacing"><number>20</number></property>
+      <property name="alignment"><set>Qt::AlignHCenter|Qt::AlignVCenter</set></property>
+      <item>
+       <widget class="QLabel" name="logo_drop">
+        <property name="pixmap"><pixmap>logo_dropbox.png</pixmap></property>
+        <property name="maximumSize"><size><width>300</width><height>100</height></size></property>
+        <property name="alignment"><set>Qt::AlignCenter</set></property>
+        <property name="scaledContents"><bool>true</bool></property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_drag">
+        <property name="text"><string>Drag &amp; Drop your image here</string></property>
+        <property name="alignment"><set>Qt::AlignCenter</set></property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_select">
+        <property name="text"><string>Select Image from Folder</string></property>
+        <property name="cursor"><cursorShape>PointingHandCursor</cursorShape></property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+   <!-- VERTICAL SPACER (BOTTOM) -->
+   <item>
+    <spacer name="vertical_spacer_bottom">
+     <property name="orientation"><enum>Qt::Vertical</enum></property>
+     <property name="sizeHint"><size><width>20</width><height>30</height></size></property>
+    </spacer>
+   </item>
+
+   <!-- FOOTER -->
+   <item>
+    <widget class="QLabel" name="label_footer">
+     <property name="text"><string>© 2025 AgriVision AI - All rights reserved.</string></property>
+     <property name="alignment"><set>Qt::AlignCenter</set></property>
+    </widget>
+   </item>
+
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
