@@ -9,8 +9,8 @@ from tensorflow.keras.models import load_model
 from torchvision import transforms, models
 
 # ====== CONFIGURATION ======
-SEG_MODEL_PATH = r"D:\Shibajit Chatterjee\Cis Internship\AgriVisionApp\unetpp_verysmall.h5"
-CLASSIFIER_MODEL_PATH = r"D:\Shibajit Chatterjee\Cis Internship\AgriVisionApp\MobileNetV2_20250728_121209_new.pth"
+SEG_MODEL_PATH = r"unetpp_verysmall.h5"
+CLASSIFIER_MODEL_PATH = r"MobileNetV2_20250728_121209_new.pth"
 CLASS_NAMES = ['healthy_soyabean', 'mosaic', 'rust']
 IMAGE_SIZE = 256
 CLASSIFIER_INPUT_SIZE = 224
@@ -110,3 +110,4 @@ def process_image_with_models(frame):
         cv2.rectangle(frame, (x, y), (x + w, y + h), color, 4)
 
     return frame  # processed image
+
