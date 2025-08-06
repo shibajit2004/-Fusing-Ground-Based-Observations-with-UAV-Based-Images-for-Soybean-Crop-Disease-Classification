@@ -5,8 +5,8 @@ from tqdm import tqdm
 import shutil
 
 # Settings
-input_dir = r'D:\Shibajit Chatterjee\Cis Internship\preprocessed_dataset\rotate_zoom\leaf'  # Main folder with multiple subfolders
-output_dir = r'D:\Shibajit Chatterjee\Cis Internship\preprocessed_dataset\rotate_zoom_median\leaf'
+input_dir = r'Path_input_directory'  # Main folder with multiple subfolders
+output_dir = r'Path_output_directory'
 kernel_size = 5
 filter_ratio = 0.4675345
 
@@ -58,3 +58,4 @@ print(f"\n All images processed.")
 print(f" Total images: {len(image_paths)}")
 print(f" Filtered with median: {num_to_filter}")
 print(f"Output saved in: {output_dir}")
+
