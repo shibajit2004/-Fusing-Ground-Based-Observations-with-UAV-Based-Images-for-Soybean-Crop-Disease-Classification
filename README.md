@@ -1,0 +1,2 @@
+# -Fusing-Ground-Based-Observations-with-UAV-Based-Images-for-Soybean-Crop-Disease-Classification
+This system uses UAV and ground-level images to detect soybean leaf diseases early. U-Net++ segments leaves from drone images, while a MobileNetV4-based model classifies them as Healthy, Mosaic, or Rust. Color-coded boxes show results, aiding scalable, real-time, and cost-effective crop health monitoring.
