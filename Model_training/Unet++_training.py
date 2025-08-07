@@ -1,6 +1,69 @@
 import os
 import cv2
 import numpy as np
+import albumentations as A
+from tqdm import tqdm
+
+# Configuration
+IMAGE_HEIGHT, IMAGE_WIDTH = 256, 256
+AUG_PER_IMAGE = 100
+
+# Input folders
+image_folder = r"total_image"
+mask_folder = r"total_masked"
+
+# Output folders
+aug_image_folder = r"./augmented_data/images"
+aug_mask_folder = r"./augmented_data/masks"
+os.makedirs(aug_image_folder, exist_ok=True)
+os.makedirs(aug_mask_folder, exist_ok=True)
+
+# Albumentations augmentation pipeline
+augment = A.Compose([
+    A.HorizontalFlip(p=0.5),
+    A.VerticalFlip(p=0.5),
+    A.RandomBrightnessContrast(p=0.5),
+    A.RandomScale(scale_limit=(0.0, 0.2), p=0.5),
+    A.Blur(blur_limit=3, p=0.3),
+], additional_targets={'mask': 'mask'})
+
+# Load and process images
+image_filenames = [f for f in os.listdir(image_folder) if f.lower().endswith(('.jpg', '.png', '.jpeg'))]
+
+for filename in tqdm(image_filenames, desc="Augmenting"):
+    base_name = os.path.splitext(filename)[0]
+
+    img_path = os.path.join(image_folder, base_name + '.jpg')
+    mask_path = os.path.join(mask_folder, base_name + '.png')
+
+    if not os.path.exists(img_path) or not os.path.exists(mask_path):
+        print(f"Skipping {base_name} due to missing file.")
+        continue
+
+    image = cv2.imread(img_path)
+    mask = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
+
+    if image is None or mask is None:
+        print(f"Skipping corrupted {base_name}.")
+        continue
+
+    image = cv2.resize(image, (IMAGE_WIDTH, IMAGE_HEIGHT))
+    mask = cv2.resize(mask, (IMAGE_WIDTH, IMAGE_HEIGHT))
+
+    for i in range(AUG_PER_IMAGE):
+        augmented = augment(image=image, mask=mask)
+        aug_img = augmented['image']
+        aug_mask = augmented['mask']
+
+        img_save_path = os.path.join(aug_image_folder, f"{base_name}_aug_{i}.jpg")
+        mask_save_path = os.path.join(aug_mask_folder, f"{base_name}_aug_{i}.png")
+
+        cv2.imwrite(img_save_path, aug_img)
+        cv2.imwrite(mask_save_path, aug_mask)
+
+print("Augmentation completed.")
+
+
 import tensorflow as tf
 from tensorflow.keras import Input, Model
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, UpSampling2D, concatenate
@@ -126,6 +189,6 @@ model.fit(
 # Evaluate and Save
 # -------------------------------
 loss, miou, acc = model.evaluate(X_val, y_val)
-print(f"\n✅ U-Net++ Evaluation:\nLoss: {loss:.4f}, Mean IoU: {miou:.4f}, Accuracy: {acc:.4f}")
+print(f"\n U-Net++ Evaluation:\nLoss: {loss:.4f}, Mean IoU: {miou:.4f}, Accuracy: {acc:.4f}")
 
 model.save("unetpp_verysmall.h5")
